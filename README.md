@@ -16,6 +16,7 @@ Here is a screenshot from Insomnia of all of the categories from a GET route:
 ![image](https://user-images.githubusercontent.com/90404513/149232766-3e117f44-cf94-42e5-bfc3-6afa5db6ccd9.png)
 
 ## Walkthrough video of application:
+https://watch.screencastify.com/v/XvquwA8YO813GpaRdOyY
 
 ## Made by:
 Erinn S. 🍀
