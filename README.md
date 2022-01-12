@@ -5,11 +5,11 @@ This application sets up the backend of an e-commerce site. Using Express routes
 
 ## How to use:
 In order to use this application, please clone this repository and then:
-    *Open your terminal and initiliaze the packages needed for this app by running _npm install_ 
-    *Open your sequel shell and initialize the database schema by running _source db/schema.sql_
-    *Seed the database by exiting out of the sequel shell and running _npm run seed_
-    *Start your server by running _npm start_
-    *Test finding, creating, changing, and deleting all of the separate routes of the site in an application like Insomnia
+*Open your terminal and initiliaze the packages needed for this app by running _npm install_ 
+*Open your sequel shell and initialize the database schema by running _source db/schema.sql_
+*Seed the database by exiting out of the sequel shell and running _npm run seed_
+*Start your server by running _npm start_
+*Test finding, creating, changing, and deleting all of the separate routes of the site in an application like Insomnia
 
 ## Screenshot:
 Here is a screenshot from Insomnia of all of the categories from a GET route:
