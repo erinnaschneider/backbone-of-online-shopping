@@ -5,6 +5,10 @@ const { Category, Product } = require('../../models');
 
 router.get('/', (req, res) => {
   Category.findAll({
+    attributes: [
+      'id',
+      'category_name'
+    ],
     include: [
       {
         model: Product,
@@ -25,6 +29,10 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
+    attributes: [
+      'id',
+      'category_name'
+    ],
     include: [
       {
         model: Product,
@@ -50,7 +58,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    id: req.body.id,
     category_name: req.body.category_name
   })
   .then(dbNewCategory => 
