@@ -7,14 +7,10 @@ router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   Tag.findAll({
-    attributes: [
-      'id',
-      'tag_name'
-    ],
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+        through: ProductTag
       }
     ]
   })
@@ -32,23 +28,15 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'tag_name'
-    ],
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+        through: ProductTag
       }
     ]
   })
   .then(dbTagData => {
-    if(!dbTagData) {
-      res.status(404).json({ message: 'No tag found with this id'});
-      return;
-    }
-    res.json(dbTagData);
+    res.status(200).json(dbTagData);
   })
   .catch(err => {
     console.log(err);
@@ -58,9 +46,9 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
-  Tag.create({
-    tag_name: req.body.tag_name
-  })
+  Tag.create(
+    req.body
+  )
   .then(dbTagData => res.json(dbTagData))
   .catch(err => {
     console.log(err);
@@ -71,9 +59,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
-    {
-      tage_name: req.body.tag_name
-    },
+    req.body,
     {
       where: {
         id: req.params.id
@@ -81,11 +67,7 @@ router.put('/:id', (req, res) => {
     }
   )
   .then(dbTagData => {
-    if(!dbTagData) {
-      res.status(404).json({ message: 'No tag found with this id'});
-      return;
-    }
-    res.json(dbTagData);
+    res.status(200).json(dbTagData);
   })
   .catch(err => {
     console.log(err);
@@ -101,11 +83,7 @@ router.delete('/:id', (req, res) => {
     }
   })
   .then(dbTagData => {
-    if(!dbTagData) {
-      res.status(404).json({ message: 'No tag found with this id' });
-      return;
-    }
-    res.json(dbTagData);
+    res.status(200).json(dbTagData);
   })
   .catch(err => {
     console.log(err);
